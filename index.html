@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Abdelhafid</title>
+<link rel="icon" type="image/x-icon" href="https://i.imgur.com/8kuwhDu.png">
+</head>
+<!-- by: Abdelhafid -->
+<style>
+body{
+background-color: #F4F6F6;
+}
+textarea{
+padding: 10px;  
+position: relative;
+background-color: #F4F6F6;
+border:1px solid #ccc;
+border-radius: 5px;
+z-index: 1;
+  }
+textarea:hover{
+border:1px solid #000;
+border-radius: 5px;
+}
+.button {
+padding: 13px 13px;
+  }
+img.button{
+margin-left: 20px;
+margin-right: 20px;
+height:50px;
+width:50px;
+cursor: pointer;
+border: 1px solid #ccc;
+border-radius: 50%;
+box-shadow: 2px 2px 5px 2px #D6DBDF;
+  }
+img.button:active{
+ box-shadow: none;
+}
+div.dom{
+width:20%;
+position: absolute;
+background-color: #ffffff;
+margin-left: 10px;
+z-index: 2;
+display: none;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+img.imageliok{
+height:20px;
+width:20px;
+}
+a{
+color:#000;
+text-decoration:none;
+}
+a:hover{
+color:#ccc;
+text-decoration:underline;
+}
+
+</style>
+<body>
+<br><br>
+<hr><hr>
+<br><br>
+<center>
+<div id="dom" class="dom"> </div>
+<textarea rows="35" cols="140" id="text"></textarea>
+<br><p id="demo"></p><br>
+
+<img src="https://i.imgur.com/DBhLVRJ.png" class="button" onclick="khlat()"/>
+<img src="https://i.imgur.com/aGjezXS.png" class="button" onclick="kbar()"/>
+<img src="https://i.imgur.com/a9ijGLW.png" class="button" onclick="kbrsgr()"/>
+<img src="https://i.imgur.com/gLZMmTy.png" class="button" onclick="nega()"/>
+<img src="https://i.imgur.com/34gLT4I.png" class="button" onclick="hayd()"/>
+<img src="https://i.imgur.com/560lskU.png" class="button" onclick="chek()"/>
+<img src="https://i.imgur.com/M09sE10.png" class="button" onclick="base64()"/>
+<img src="https://i.imgur.com/vqiDdum.png" class="button" onclick="clean()"/>
+ 
+</center>
+
+<script>
+
+
+let element = document.getElementById("text");
+
+function khlat(){ 
+  var input = element.value; 
+  const lines = input.split(/\r?\n/);
+    for (let i = lines.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [lines[i], lines[j]] = [lines[j], lines[i]];
+  }
+  element.value = lines.join("\n");
+}
+
+let bool = true;
+function kbar(){
+if(bool){
+  var input = element.value; 
+  element.value = input.toUpperCase()
+                       .replace(/__RANDOM_AL/gi , '__Random_al')
+                       .replace(/__RANDOM_ANM/gi , '__Random_anm')
+                       .replace(/__RANDOM_NM/gi , '__Random_nm')
+                       .replace(/L]/gi , 'l]')
+                       .replace(/U]/gi , 'u]')
+                       .replace(/S]/gi , 's]');
+bool = false;
+}
+else {
+var input = element.value; 
+  element.value = input.toLowerCase()
+                       .replace(/__RANDOM_AL/gi , '__Random_al')
+                       .replace(/__RANDOM_ANM/gi , '__Random_anm')
+                       .replace(/__RANDOM_NM/gi , '__Random_nm')
+                       .replace(/L]/gi , 'l]')
+                       .replace(/U]/gi , 'u]')
+bool = true;
+}
+}
+
+function kbrsgr(){
+  
+  var input = element.value; 
+  const nar = input.toLowerCase().split('');
+  for (var i = 0; i < nar.length; i += 2) {
+    nar[i] = nar[i].toUpperCase();
+  }
+  element.value = nar.join('')
+					 .replace(/__RANDOM_AL/gi , '__Random_al')
+                     .replace(/__RANDOM_ANM/gi , '__Random_anm')
+                     .replace(/__RANDOM_NM/gi , '__Random_nm')
+                     .replace(/L]/gi , 'l]')
+                     .replace(/U]/gi , 'u]')
+                     .replace(/S]/gi , 's]');
+  
+}
+
+function nega(){
+  var input = element.value;
+  element.value = input
+                      .replace(/ /gi , '_')
+                      .replace(/a/gi , '-Â/')
+                      .replace(/o/gi , '0-')
+                      .replace(/u/gi , '*Û*')
+                      .replace(/i/gi , '&ï')
+                      .replace(/e/gi , 'Ë|')
+					  .replace(/,/gi , ' __Random_anm[5,s] ');
+}
+
+function hayd(){
+  var input = element.value;
+  element.value = input.replace(/^\s*$(?:\r\n?|\n)/gm, "");
+}
+
+
+function chek(){
+  var input = element.value;
+if(input == ''){
+  document.getElementById("dom").style.display = "none";
+}
+else{
+  document.getElementById("dom").innerHTML = "";
+  document.getElementById("dom").style.display = "block";
+  const lines = input.split(/\r?\n/);
+  for (let i = 0 ; i < lines.length; i++){
+  document.getElementById("dom").innerHTML +='<table style="width:100%"><tr><td style="width:80%"> <a href="http://'+lines[i]+'/" target="_blank">'+lines[i]
+								+'</a></td><td><img src="http://'+lines[i]+'/1t360pqoztuv/okhafid.jpg" alt="not ok" class="imageliok" /></td></tr></table><br><hr>';
+}}}
+
+function base64(){
+var input = element.value;
+if(input == ''){
+element.value = '';
+}
+else{
+  var input = element.value;
+  element.value = "=?UTF-8?B?" + btoa(input) + "?=";
+}
+}
+
+function header(){
+  var input = element.value;
+  element.value = 'To: <__To>\nReference: <20020101.outlook@mail-__Random_nm[7].es>\nContent-Type: multipart/digest; boundary="_5098DFG489H4D9FGH021659192569165DF0GH2651659_"\nCc:__To\nMIME-Version: 10.0\nMessage-ID: <__Random_anm[21,u]-Ct-s25fdfd52fd52-107.6.__Random_nm[4].94@369502FG369502FG.mx.google.com>\nARC-Authentication-Results: i=1; mx.google.com7652002X7652002\nX-CSA-Complaints: whitelist-complaints@eco.de\nDate: __smtpDate\nSubject: CongratuLations __LinkU ! __Random_nm[3]\nReferences: <___Random_al[15,l].___Random_al[96,l].___Random_al[32,l].JavaMail.app@mail-mx.google.com>\nFrom: _GoldEnTiger<___Random_al[10,s]_@mailnews.__Bounce_dnO>\nFeedback-ID: 815-anexp#nret-fa:account-NOTIFIER-__Random_al[23,l],__Random_al[10,l]-NOTIFIER-__Random_al[23,l],';
+
+khlat();
+}
+
+
+function clean(){
+	element.value = '';
+	document.getElementById("dom").innerHTML = "";
+	document.getElementById("dom").style.display = "none";
+}
+
+
+  </script>
+</body>
+</html>
