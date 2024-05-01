@@ -7,18 +7,45 @@
 <!-- by: Abdelhafid -->
 <style>
 body{
-background-color: #F4F6F6;
+background-color: #ECEEF2;
+
 }
+
+div.head{
+background-color: #ffffff;
+border: 1px solid #a6c9e2;
+width:100%;
+height:40px;
+border-radius: 5px;
+font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+color: #454545;
+font-size: 10px;
+
+}
+div.head.font{
+align:center;
+padding-top:25px;
+}
+
+section.content{
+background-color: #ffffff;
+border: 1px solid #a6c9e2;
+width:80%;
+height:850px;
+border-radius: 5px;
+margin-top:15px;
+}
+
 textarea{
 padding: 10px;  
 position: relative;
-background-color: #F4F6F6;
-border:1px solid #ccc;
+background-color: #ffffff;
+border: 1px solid #a6c9e2;
 border-radius: 5px;
 z-index: 1;
   }
 textarea:hover{
-border:1px solid #000;
+border:1px solid #16c9e2;
 border-radius: 5px;
 }
 .button {
@@ -27,15 +54,16 @@ padding: 13px 13px;
 img.button{
 margin-left: 20px;
 margin-right: 20px;
-height:50px;
-width:50px;
+height:30px;
+width:40px;
 cursor: pointer;
-border: 1px solid #ccc;
-border-radius: 50%;
+border: 1px solid #a6c9e2;
+border-radius: 15%;
 box-shadow: 2px 2px 5px 2px #D6DBDF;
   }
 img.button:active{
  box-shadow: none;
+ border:1px solid #16c9e2;
 }
 div.dom{
 width:20%;
@@ -44,6 +72,7 @@ background-color: #ffffff;
 margin-left: 10px;
 z-index: 2;
 display: none;
+top: 50px;
 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -59,27 +88,45 @@ a:hover{
 color:#ccc;
 text-decoration:underline;
 }
+div.radioBondary{
+position: relative;
+left: -113px;
+
+}
 
 </style>
 <body>
-<br><br>
-<hr><hr>
-<br><br>
 <center>
-<div id="dom" class="dom"> </div>
-<textarea rows="35" cols="140" id="text"></textarea>
-<br><p id="demo"></p><br>
+<div class="head"><font size="5"> <b>Multi Service</b></font></div>
 
-<img src="https://i.imgur.com/DBhLVRJ.png" class="button" onclick="khlat()"/>
-<img src="https://i.imgur.com/aGjezXS.png" class="button" onclick="kbar()"/>
-<img src="https://i.imgur.com/a9ijGLW.png" class="button" onclick="kbrsgr()"/>
-<img src="https://i.imgur.com/gLZMmTy.png" class="button" onclick="nega()"/>
-<img src="https://i.imgur.com/34gLT4I.png" class="button" onclick="hayd()"/>
-<img src="https://i.imgur.com/560lskU.png" class="button" onclick="chek()"/>
-<img src="https://i.imgur.com/M09sE10.png" class="button" onclick="base64()"/>
-<img src="https://i.imgur.com/vqiDdum.png" class="button" onclick="clean()"/>
- 
+<section class="content">
+<br><br>
+<textarea rows="35" cols="185" id="text"></textarea>
+<br><br>
+<div>
+<img src="https://i.imgur.com/Az8e3w7.png" class="button" onclick="khlat()"/>
+<img src="https://i.imgur.com/lQHr6rX.png" class="button" onclick="kbar()"/>
+<img src="https://i.imgur.com/2hmzBsC.png" class="button" onclick="kbrsgr()"/>
+<img src="https://i.imgur.com/bOZ8q8n.png" class="button" onclick="boundary()"/>
+<img src="https://i.imgur.com/Gvq39VY.png" class="button" onclick="nega()"/>
+<img src="https://i.imgur.com/0ESfE3z.png" class="button" onclick="hayd()"/>
+<img src="https://i.imgur.com/xOaEwGA.png" class="button" onclick="chek()"/>
+<img src="https://i.imgur.com/OdKeFCT.png" class="button" onclick="base64()"/>
+<img src="https://i.imgur.com/AsG3UTw.png" class="button" onclick="clean()"/>
+
+<div class='radioBondary'>
+<input type="radio" id="bondary1" name="bondary" >
+<input type="radio" id="bondary2" name="bondary" >
+<input type="radio" id="bondary3" name="bondary">
+<input type="radio" id="bondary4" name="bondary">
+</div>
+ </div>
+ </section>
+ <div id="dom" class="dom"> </div>
 </center>
+
+
+
 
 <script>
 
@@ -121,6 +168,42 @@ bool = true;
 }
 }
 
+function boundary(){
+var bondary1 = document.getElementById("bondary1");
+var bondary2 = document.getElementById("bondary2");
+var bondary3 = document.getElementById("bondary3");
+	element.value = '';
+	let result = "b";
+	let hexChar = "1234567890abcdef";
+
+if (bondary1.checked){
+    for (var i = 0; i < 32; i++) {
+	result += hexChar.charAt(Math.floor(Math.random() * hexChar.length));
+}
+	element.value = "_=_swift_" + Math.floor(Math.random() * 10000000000) + "_" + result + "_=_";
+
+}else if (bondary2.checked) {
+    for (var i = 0; i < 59; i++) {
+	result += hexChar.charAt(Math.floor(Math.random() * hexChar.length));
+}
+	element.value = result;
+	
+}else if (bondary3.checked) {
+    for (var i = 0; i < 31; i++) {
+	result += hexChar.charAt(Math.floor(Math.random() * hexChar.length));
+}
+	element.value = "_----------=_MCPart_" + result;
+	
+}
+else if (bondary4.checked) {
+	element.value = "----=_Part_" + Math.floor(Math.random() * 1000000) + "_" + Math.floor(Math.random() * 100000000)+ "." + Math.floor(Math.random() * 1000000000000)  ;
+	
+}
+
+
+}
+
+
 function kbrsgr(){
   
   var input = element.value; 
@@ -141,17 +224,17 @@ function kbrsgr(){
 function nega(){
   var input = element.value;
   element.value = input
-                      .replace(/ /gi , '_')
-                      .replace(/a/gi , '-Â/')
-                      .replace(/o/gi , '0-')
-                      .replace(/u/gi , '*Û*')
-                      .replace(/i/gi , '&ï')
-                      .replace(/e/gi , 'Ë|')
-					  .replace(/,/gi , ' __Random_anm[5,s] ');
+                      .replace(/  /gi , '_')
+                      .replace(/a/gi , '<p>')
+                      .replace(/o/gi , '<tr>')
+                      .replace(/u/gi , '<div>')
+                      .replace(/i/gi , '<br>')
+                      .replace(/e/gi , '<br>')
+					  .replace(/,/gi , '<td valign="top">');
 }
 
 function hayd(){
-  var input = element.value;
+    var input = element.value;
   element.value = input.replace(/^\s*$(?:\r\n?|\n)/gm, "");
 }
 
@@ -182,11 +265,11 @@ else{
 }
 
 function header(){
-  var input = element.value;
+    var input = element.value;
   element.value = 'To: <__To>\nReference: <20020101.outlook@mail-__Random_nm[7].es>\nContent-Type: multipart/digest; boundary="_5098DFG489H4D9FGH021659192569165DF0GH2651659_"\nCc:__To\nMIME-Version: 10.0\nMessage-ID: <__Random_anm[21,u]-Ct-s25fdfd52fd52-107.6.__Random_nm[4].94@369502FG369502FG.mx.google.com>\nARC-Authentication-Results: i=1; mx.google.com7652002X7652002\nX-CSA-Complaints: whitelist-complaints@eco.de\nDate: __smtpDate\nSubject: CongratuLations __LinkU ! __Random_nm[3]\nReferences: <___Random_al[15,l].___Random_al[96,l].___Random_al[32,l].JavaMail.app@mail-mx.google.com>\nFrom: _GoldEnTiger<___Random_al[10,s]_@mailnews.__Bounce_dnO>\nFeedback-ID: 815-anexp#nret-fa:account-NOTIFIER-__Random_al[23,l],__Random_al[10,l]-NOTIFIER-__Random_al[23,l],';
-
 khlat();
 }
+
 
 
 function clean(){
