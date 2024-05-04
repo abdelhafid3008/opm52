@@ -65,16 +65,6 @@ img.button:active{
  box-shadow: none;
  border:1px solid #16c9e2;
 }
-div.dom{
-width:20%;
-position: absolute;
-background-color: #ffffff;
-margin-left: 10px;
-z-index: 2;
-display: none;
-top: 50px;
-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
 
 img.imageliok{
 height:20px;
@@ -94,6 +84,53 @@ left: -113px;
 
 }
 
+div.chekdom{
+height: 530px;
+width:50%;
+position: absolute;
+background-color: #ffffff;
+z-index: 2;
+display: none;
+top: 110px;
+left:24%;
+border: 1px solid #16c9e2;
+border-radius:5px;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+padding:10px 20px ;
+
+}
+
+div.chekdom hr{
+border-top: 1px solid #16c9e2;
+}
+div.chekdom .nochekdom{
+text-align:right;
+}
+div.chekdom button{
+height: 20px;
+width: 20px;
+font-size:10px;
+border:none;
+color:red;
+border-radius:2px;
+}
+div.chekdom img.loading{
+height: 40px;
+width: 40px;
+}
+
+div.chekdom table.table_chekdom tr td{ 
+padding: 8px;
+border: 1px solid #ddd;
+text-align: center;
+}
+
+div.chekdom table.table_chekdom tr:hover{ 
+background-color: #eee;
+}
+
+
+
 </style>
 <body>
 <center>
@@ -101,7 +138,7 @@ left: -113px;
 
 <section class="content">
 <br><br>
-<textarea rows="35" cols="185" id="text"></textarea>
+<textarea rows="35" cols="135" id="text"></textarea>
 <br><br>
 <div>
 <img src="https://i.imgur.com/Az8e3w7.png" class="button" onclick="khlat()"/>
@@ -122,7 +159,21 @@ left: -113px;
 </div>
  </div>
  </section>
- <div id="dom" class="dom"> </div>
+
+ <div id="chekdom" class="chekdom"> 
+ <div class="nochekdom">
+<button onclick="nochekdom()">x</button>
+ <hr>
+ <center>
+ <div style="overflow: auto; height: 490px;">
+ <table id="table_chekdom" class="table_chekdom" style="width:90%; border-collapse: collapse;"></table>
+ <img id="loading" src="https://i.imgur.com/p2JmKER.gif" class="loading"/>
+</div>
+  </center>
+  </div>
+  
+  
+ </div>
 </center>
 
 
@@ -238,20 +289,42 @@ function hayd(){
   element.value = input.replace(/^\s*$(?:\r\n?|\n)/gm, "");
 }
 
-
+function nochekdom(){
+document.getElementById("table_chekdom").innerHTML = "";
+document.getElementById("chekdom").style.display = "none";
+}
+document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        nochekdom();
+      }
+    });
+	
 function chek(){
   var input = element.value;
 if(input == ''){
   document.getElementById("dom").style.display = "none";
 }
 else{
-  document.getElementById("dom").innerHTML = "";
-  document.getElementById("dom").style.display = "block";
+  document.getElementById("table_chekdom").innerHTML = "";
+  document.getElementById("chekdom").style.display = "block";
   const lines = input.split(/\r?\n/);
   for (let i = 0 ; i < lines.length; i++){
-  document.getElementById("dom").innerHTML +='<table style="width:100%"><tr><td style="width:80%"> <a href="http://'+lines[i]+'/" target="_blank">'+lines[i]
-								+'</a></td><td><img src="http://'+lines[i]+'/1t360pqoztuv/okhafid.jpg" alt="not ok" class="imageliok" /></td></tr></table><br><hr>';
-}}}
+  
+ fetch('http://'+lines[i]+'/', { mode: 'no-cors' })
+    .then(response => {
+        document.getElementById("table_chekdom").innerHTML +='<tr><td><a href="http://'+lines[i]+'/" target="_blank">'+lines[i]
+		+'</a></td><td><img src="https://i.imgur.com/U6TxjLH.png" class="imageliok" /></td></tr>';
+    })
+    .catch(error => {
+		document.getElementById("table_chekdom").innerHTML +='<tr><td><a href="http://'+lines[i]+'/" target="_blank">'+lines[i]
+		+'</a></td><td><img src="https://i.imgur.com/4efIZG0.png" class="imageliok" /></td></tr>';
+    });					
+							
+}
+
+}
+document.getElementById("loading").style.display = "none";
+}
 
 function base64(){
 var input = element.value;
@@ -264,18 +337,14 @@ else{
 }
 }
 
-function header(){
-    var input = element.value;
-  element.value = 'To: <__To>\nReference: <20020101.outlook@mail-__Random_nm[7].es>\nContent-Type: multipart/digest; boundary="_5098DFG489H4D9FGH021659192569165DF0GH2651659_"\nCc:__To\nMIME-Version: 10.0\nMessage-ID: <__Random_anm[21,u]-Ct-s25fdfd52fd52-107.6.__Random_nm[4].94@369502FG369502FG.mx.google.com>\nARC-Authentication-Results: i=1; mx.google.com7652002X7652002\nX-CSA-Complaints: whitelist-complaints@eco.de\nDate: __smtpDate\nSubject: CongratuLations __LinkU ! __Random_nm[3]\nReferences: <___Random_al[15,l].___Random_al[96,l].___Random_al[32,l].JavaMail.app@mail-mx.google.com>\nFrom: _GoldEnTiger<___Random_al[10,s]_@mailnews.__Bounce_dnO>\nFeedback-ID: 815-anexp#nret-fa:account-NOTIFIER-__Random_al[23,l],__Random_al[10,l]-NOTIFIER-__Random_al[23,l],';
-khlat();
-}
+ 
 
 
 
 function clean(){
 	element.value = '';
-	document.getElementById("dom").innerHTML = "";
-	document.getElementById("dom").style.display = "none";
+	document.getElementById("table_chekdom").innerHTML = "";
+	document.getElementById("chekdom").style.display = "none";
 }
 
 
